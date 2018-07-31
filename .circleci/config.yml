@@ -18,6 +18,9 @@ jobs:
         steps:
             - checkout 
             - run:
+                name: Create .env file
+                command: touch .env
+            - run:
                 name: Run Tests
                 command: docker-compose run pytest tests/
 workflows:
