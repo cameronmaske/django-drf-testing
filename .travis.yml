@@ -9,7 +9,6 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.22.0
 
-
 before_install:
   # Load cached docker images
   - if [[ -f $HOME/docker/postgres.tar.gz ]]; then gzip -dc $HOME/docker/postgres.tar.gz | docker load; fi
