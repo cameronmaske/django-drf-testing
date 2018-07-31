@@ -31,12 +31,12 @@ before_install:
   # one we specified). This is not to be confused with the version we printed
   # before doing the update.
   - docker-compose --version
-
+  
+  - touch .env
   # Setup your application stack. You may need to tweak these commands if you
   # doing out-of-the-ordinary docker-compose builds.
   - docker-compose pull
   - docker-compose build
-  - touch .env
 
   - docker-compose up -d db
   - docker-compose run api pytest tests/
