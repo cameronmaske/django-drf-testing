@@ -1,0 +1,22 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+    links:
+      - db
+    env_file: .env
+    environment:
+        - DATABASE_URL=postgresql://user:password@db:5432/db
+        - DEBUG=true
+        - ALLOWED_HOSTS=*
+        - SECRET_KEY=foo
+  db:
+      image: postgres:10.4
+      environment:
+          - POSTGRES_PASSWORD=password
+          - POSTGRES_USER=user
+          - POSTGRES_DB=db

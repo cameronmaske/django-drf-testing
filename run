@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+if [[ -n ${AUTO_MIGRATE} ]]; then
+    echo "Auto-migrate is enabled."
+    sleep 3
+    python app/manage.py migrate
+fi
+
+echo "Running server"
+python app/manage.py runserver 0.0.0.0:5000
