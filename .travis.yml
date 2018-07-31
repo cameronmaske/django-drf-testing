@@ -10,9 +10,6 @@ env:
   DOCKER_COMPOSE_VERSION: 1.22.0
 
 before_install:
-  # Load cached docker images
-  - if [[ -f $HOME/docker/postgres.tar.gz ]]; then gzip -dc $HOME/docker/postgres.tar.gz | docker load; fi
-  - if [[ -f $HOME/docker/api.tar.gz ]]; then gzip -dc $HOME/docker/api.tar.gz | docker load; fi
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
@@ -29,12 +26,3 @@ install:
 
 script:
   - docker-compose run api pytest tests/
-
-before_cache:
-  - docker save postgres | gzip > $HOME/docker/postgres.tar.gz
-  - docker save django-drf-testing_api | gzip > $HOME/docker/api.tar.gz
-
-cache:
-  bundler: true
-  directories:
-    - $HOME/docker
