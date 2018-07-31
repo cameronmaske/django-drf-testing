@@ -1,0 +1,20 @@
+version: 2
+jobs:
+    build:
+        machine: true
+        steps:
+            - checkout
+            - run:
+                name: Create .env file
+                command: touch .env
+            - run:
+                name: Build Containers
+                command: docker-compose build
+            - run:
+                name: Run Postgres
+                command: docker-compose up -d db
+    test:
+        steps:
+            - run:
+                name: Run Tests
+                command: docker-compose run pytest tests/

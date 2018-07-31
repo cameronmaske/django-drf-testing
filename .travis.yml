@@ -1,0 +1,28 @@
+sudo: required
+addons:
+  apt:
+    packages:
+      - docker-ce
+services:
+  - docker
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.22.0
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+  - touch .env
+  # Setup your application stack. You may need to tweak these commands if you
+  # doing out-of-the-ordinary docker-compose builds.
+
+install:
+  - docker-compose pull
+  - docker-compose build
+  - docker-compose up -d db
+
+script:
+  - docker-compose run api pytest tests/

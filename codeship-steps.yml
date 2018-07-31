@@ -1,0 +1,3 @@
+- name: api tests
+  service: api
+  command: pytest tests/
