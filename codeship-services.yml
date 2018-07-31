@@ -11,7 +11,7 @@ services:
       - ALLOWED_HOSTS=*
       - SECRET_KEY=foo
   db:
-    image: healthcheck/postgres:10.4
+    image: healthcheck/postgres
     cached: true
     environment:
       - POSTGRES_PASSWORD=password
