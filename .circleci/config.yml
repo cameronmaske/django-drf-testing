@@ -22,7 +22,7 @@ jobs:
                 command: touch .env
             - run:
                 name: Run Tests
-                command: docker-compose run pytest tests/
+                command: docker-compose run api pytest tests/
 workflows:
   version: 2
   build_and_test:
