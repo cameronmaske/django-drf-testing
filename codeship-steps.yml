@@ -1,3 +1,5 @@
-- name: ruby
+- name: create env file
+  command: touch .env
+- name: api tests
   service: api
   command: pytest tests/

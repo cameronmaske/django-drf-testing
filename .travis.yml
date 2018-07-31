@@ -36,6 +36,7 @@ before_install:
   # doing out-of-the-ordinary docker-compose builds.
   - docker-compose pull
   - docker-compose build
+  - touch .env
 
   - docker-compose up -d db
   - docker-compose run api pytest tests/
