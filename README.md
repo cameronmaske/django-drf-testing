@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/cameronmaske/django-drf-testing.svg?branch=master)](https://travis-ci.org/cameronmaske/django-drf-testing)
+[![CircleCI](https://circleci.com/gh/cameronmaske/django-drf-testing.svg?style=svg)](https://circleci.com/gh/cameronmaske/django-drf-testing)
+[ ![Codeship Status for cameronmaske/django-drf-testing](https://app.codeship.com/projects/dee20c70-7715-0136-9f23-72575e5602ca/status?branch=master)](https://app.codeship.com/projects/300111)
+
 # Testing Django Rest Framework
 
 ## Local development
