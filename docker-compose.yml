@@ -8,7 +8,6 @@ services:
       - .:/code
     links:
       - db
-    env_file: .env
     environment:
         - DATABASE_URL=postgresql://user:password@db:5432/db
         - DEBUG=true
