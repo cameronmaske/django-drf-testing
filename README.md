@@ -34,4 +34,3 @@ To run tests locally, use the following command:
 ```bash
 docker-compose run api pytest tests/
 ```
-
