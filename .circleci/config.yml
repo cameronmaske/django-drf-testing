@@ -16,5 +16,14 @@ jobs:
                 name: Run Postgres
                 command: docker-compose up -d db
             - run:
+                name: Start up API
+                command: docker-compose run -d api sleep 1000
+            - run:
+                name: Copy files (app)
+                command: docker cp /app "$(docker-compose ps -q api)":/code/app
+            - run:
+                name: Copy files (tests)
+                command: docker cp /tests "$(docker-compose ps -q api)":/code/tests
+            - run:
                 name: Run Tests
                 command: docker-compose run api pytest tests/
