@@ -1,19 +1,16 @@
-version: '3'
-services:
-  api:
-    build: .
-    depends_on:
-      - db
-    cached: true
-    environment:
-      - DATABASE_URL=postgresql://user:password@db:5432/db
-      - DEBUG=true
-      - ALLOWED_HOSTS=*
-      - SECRET_KEY=foo
-  db:
-    image: healthcheck/postgres
-    cached: true
-    environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=user
-      - POSTGRES_DB=db
+api:
+  build: .
+  depends_on:
+    - db
+  cached: true
+  environment:
+    - DATABASE_URL=postgresql://user:password@db:5432/db
+    - DEBUG=true
+    - ALLOWED_HOSTS=*
+    - SECRET_KEY=foo
+db:
+  image: healthcheck/postgres
+  environment:
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_USER=user
+    - POSTGRES_DB=db
