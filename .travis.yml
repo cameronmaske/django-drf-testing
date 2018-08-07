@@ -20,7 +20,7 @@ before_install:
   # doing out-of-the-ordinary docker-compose builds.
 
 install:
-  - docker-compose pull
+  - docker-compose pull&
   - docker-compose build
   - docker-compose up -d db
 
