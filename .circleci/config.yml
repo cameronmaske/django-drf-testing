@@ -4,6 +4,9 @@ jobs:
         machine: true
         steps:
             - checkout
+            - run: 
+                name: Docker version
+                command: docker --version
             - run:
                 name: Create .env file
                 command: touch .env
