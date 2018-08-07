@@ -20,10 +20,10 @@ jobs:
                 command: docker-compose run -d api sleep 1000
             - run:
                 name: Copy files (app)
-                command: docker cp /app "$(docker-compose ps -q api)":/code/app
+                command: docker cp $PWD/app "$(docker-compose ps -q api)":/code/app
             - run:
                 name: Copy files (tests)
-                command: docker cp /tests "$(docker-compose ps -q api)":/code/tests
+                command: docker cp $PWD/tests "$(docker-compose ps -q api)":/code/tests
             - run:
                 name: Run Tests
                 command: docker-compose run api pytest tests/
