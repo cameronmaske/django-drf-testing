@@ -1,9 +1,9 @@
 version: 2
 jobs:
     build:
-        machine: true
         steps:
             - checkout
+            - setup_remote_docker
             - run:
                 name: Create .env file
                 command: touch .env
