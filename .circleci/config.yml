@@ -11,8 +11,5 @@ jobs:
                 name: Build Containers
                 command: docker-compose build
             - run:
-                name: Run Postgres
-                command: docker-compose up -d db
-            - run:
                 name: Run Tests
-                command: docker-compose run api pytest tests/
+                command: docker-compose --no-deps run api pytest tests/
