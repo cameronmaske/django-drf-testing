@@ -10,9 +10,9 @@ RUN pip install -r requirements-dev.txt
 
 ADD requirements.txt /code/
 RUN pip install -r requirements.txt
-RUN pip install -e .
 
 ADD . /code/
+RUN pip install -e .
 
 ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
