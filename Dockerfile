@@ -10,7 +10,7 @@ RUN pip install -r requirements-dev.txt
 
 ADD requirements.txt /code/
 RUN pip install -r requirements.txt
-RUN pip install -E .
+RUN pip install -e .
 
 ADD . /code/
 
