@@ -3,6 +3,7 @@ import os
 import sys
 
 if __name__ == "__main__":
+    print("manage.py called")
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
     try:
         from django.core.management import execute_from_command_line

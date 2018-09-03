@@ -1,8 +1,11 @@
 from django.urls import reverse
 import pytest 
 from example.models import Example
+from django.conf import settings
 
-
+def test_a():
+    pass
+    
 @pytest.mark.django_db
 def test_list_empty(client):
     response = client.get("/api/example/", format='json')
