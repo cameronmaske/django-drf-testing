@@ -3,19 +3,20 @@ FROM python:3.6-alpine
 RUN apk update && apk add build-base postgresql-dev libffi-dev dumb-init bash
 RUN pip install -U pip 
 
-WORKDIR /code/
+WORKDIR /app/
 
-ADD requirements-dev.txt /code/
-RUN pip install -r requirements-dev.txt
+RUN pip install pipenv 
+ADD Pipfile /app/
+ADD Pipfile.lock /app/
+ADD setup.py /app/
+RUN pipenv run python setup.py develop
+RUN pipenv install --dev
 
-ADD requirements.txt /code/
-RUN pip install -r requirements.txt
-
-ADD . /code/
+ADD . /app/
 
 ADD run /usr/local/bin/run
 RUN chmod +x /usr/local/bin/run
 
-ENTRYPOINT ["dumb-init"]
+ENTRYPOINT ["dumb-init", "pipenv", "run"]
 
 CMD ["/usr/local/bin/run"]

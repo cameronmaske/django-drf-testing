@@ -1,7 +1,29 @@
+import pytest
+from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
-import pytest 
+
 
 @pytest.fixture
 def client():
-    client = APIClient()
-    return client
+    return APIClient()
+
+
+@pytest.fixture(autouse=True)
+def enable_db_access_for_all_intergration_tests(db):
+    pass
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def user():
+    User = get_user_model()
+    return User.objects.create(
+        email="john@example.com", username="johndoe", is_staff=False
+    )
+
+
+@pytest.fixture
+@pytest.mark.django_db
+def staff():
+    User = get_user_model()
+    return User.objects.create(email="alice@staff.com", username="alice", is_staff=True)

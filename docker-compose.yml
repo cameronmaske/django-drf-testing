@@ -1,27 +1,28 @@
-version: '3'
+version: "3"
 services:
   api:
     build: .
     ports:
       - "5000:5000"
     volumes:
-      - .:/code
+      - .:/app
     links:
       - db
     env_file: .env
     environment:
-        - DATABASE_URL=postgresql://user:password@db:5432/db
-        - DEBUG=true
-        - ALLOWED_HOSTS=*
-        - SECRET_KEY=foo
+      - DATABASE_URL=postgresql://user:password@db:5432/db
+      - DEBUG=true
+      - ALLOWED_HOSTS=*
+      - SECRET_KEY=foo
+      - AUTO_MIGRATE=true
   db:
-      image: postgres:10.4
-      environment:
-          - POSTGRES_PASSWORD=password
-          - POSTGRES_USER=user
-          - POSTGRES_DB=db
-      healthcheck:
-        test: ["CMD-SHELL", "pg_isready -U postgres"]
-        interval: 10s
-        timeout: 5s
-        retries: 5
+    image: postgres:10.4
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

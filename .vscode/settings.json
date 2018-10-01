@@ -1,0 +1,8 @@
+{
+  "python.formatting.provider": "black",
+  "python.linting.pylintArgs": ["--load-plugins=pylint_django"],
+  "editor.rulers": [88, 100],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
+}
